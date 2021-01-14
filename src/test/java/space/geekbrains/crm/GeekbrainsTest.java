@@ -5,14 +5,12 @@ import org.apache.log4j.Logger;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import ru.dairy.MainTest;
 
 import java.util.HashMap;
 import java.util.List;
@@ -50,7 +48,7 @@ public class GeekbrainsTest {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver(options);
         wait = new WebDriverWait(driver, 30);
-        logger = Logger.getLogger(MainTest.class);
+        logger = Logger.getLogger(GeekbrainsTest.class);
 
         js = (JavascriptExecutor) driver;
         vars = new HashMap<>();
