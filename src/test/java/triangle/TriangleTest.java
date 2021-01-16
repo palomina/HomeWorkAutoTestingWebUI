@@ -18,7 +18,7 @@ public class TriangleTest {
     }
 
     @DisplayName("Провекра расчета площади")
-    @ParameterizedTest
+//    @ParameterizedTest
     @CsvSource({"6,3,4,5", "12,6,5,5", "12,8,5,5"})
     public void squareTest(String s, String a, String b, String c) {
         logger.info("Data assignment (Задание данных)");
@@ -31,7 +31,7 @@ public class TriangleTest {
         Assertions.assertEquals(s1, Triangle.square(a1, b1, c1));
     }
 
-    @Test
+//    @Test
     @DisplayName("Проверка появления ошибки при задании отрицательных значений для сторон треугольника")
     public void squareExceptionNegativeSideTest() {
         Throwable exception = Assertions.assertThrows(IllegalArgumentException.class, () -> Triangle.square(-3, 4, 5));
@@ -39,7 +39,7 @@ public class TriangleTest {
         Assertions.assertEquals("Неверно заданы стороны треугольника!", exception.getMessage());
     }
 
-    @Test
+//    @Test
     @DisplayName("Проверка появления ошибки для несуществующего треугольника")
     public void squareExceptionTriangleExistTest() {
         Throwable exception = Assertions.assertThrows(IllegalArgumentException.class, () -> Triangle.square(6, 1, 1));

@@ -1,5 +1,6 @@
 package ru.dairy.pages;
 
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
 
 import org.openqa.selenium.WebDriver;
@@ -19,6 +20,7 @@ public class SearchPage extends BaseView {
         super(driver);
     }
 
+    @Step("Check Page with {searchText}")
     public void checkPage(String searchText) {
         Assertions.assertEquals("Поиск по дневникам", header.getText());
         Assertions.assertEquals(searchText, inputSearch.getAttribute("value"));

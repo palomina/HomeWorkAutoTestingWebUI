@@ -51,7 +51,7 @@ public class MainTest {
         driver.quit();
     }
 
-    @Test
+//    @Test
     @DisplayName("Проверка авторизации")
     public void test1() {
         logger.info("Opening of the website dairy.ru (Открытие сайта dairy.ru)");
@@ -78,7 +78,7 @@ public class MainTest {
         Assertions.assertEquals("Вход", driver.findElement(By.id("drop-login")).getText());
     }
 
-    @Test
+//    @Test
     @DisplayName("Проверка создания новой записи")
     public void test2() {
         String title = "НОВАЯ ЗАПИСЬ " + randomName();
@@ -137,7 +137,7 @@ public class MainTest {
         Assertions.assertEquals("Вход", driver.findElement(By.id("drop-login")).getText());
     }
 
-    @Test
+//    @Test
     @DisplayName("Проверка поиска для неавторизованного пользователя")
     public void test3() {
         logger.info("Opening of the website dairy.ru (Открытие сайта dairy.ru)");
@@ -168,7 +168,7 @@ public class MainTest {
         }
     }
 
-    @Test
+//    @Test
     @DisplayName("Проверка удаления записи")
     public void test4() {
         logger.info("Opening of the website dairy.ru (Открытие сайта dairy.ru)");

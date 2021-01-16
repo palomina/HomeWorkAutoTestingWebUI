@@ -1,7 +1,7 @@
 package space.geekbrains.crm.pages;
 
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -79,42 +79,49 @@ public class NewProjectPage extends BaseView {
     @FindBy(xpath = "//div[contains(@style, 'display: block')][contains(@class, 'select2-drop-active')]//ul/li[1]")
     private WebElement firstContact;
 
+    @Step("Enter Name {name}")
     public NewProjectPage enterName(String name) {
         wait.until(ExpectedConditions.textToBePresentInElement(labelName, "Наименование"));
         inputName.sendKeys(name);
         return this;
     }
 
+    @Step("Enter Business")
     public NewProjectPage enterBusiness() {
         selectBusinessUnit.click();
         optionBusiness.click();
         return this;
     }
 
+    @Step("Enter RP")
     public NewProjectPage enterRP() {
         selectRP.click();
         optionRP.click();
         return this;
     }
 
+    @Step("Enter Curator")
     public NewProjectPage enterCurator() {
         selectCurator.click();
         optionCurator.click();
         return this;
     }
 
+    @Step("Enter Administrator")
     public NewProjectPage enterAdministrator() {
         selectAdministrator.click();
         optionAdministrator.click();
         return this;
     }
 
+    @Step("Enter Manager")
     public NewProjectPage enterManager() {
         selectManager.click();
         optionManager.click();
         return this;
     }
 
+    @Step("Enter Company {company}")
     public NewProjectPage enterCompany(String company) {
         wait.until(ExpectedConditions.visibilityOf(companyContainer));
         delay();
@@ -140,6 +147,7 @@ public class NewProjectPage extends BaseView {
         return this;
     }
 
+    @Step("Enter Contact {contact}")
     public NewProjectPage enterContact(String contact) {
         delay();
         contactContainer.click();
@@ -166,6 +174,7 @@ public class NewProjectPage extends BaseView {
         } catch (Exception e) {}
     }
 
+    @Step("Check Filling {name}")
     public NewProjectPage checkFilling(String name) {
 
         {
@@ -175,6 +184,7 @@ public class NewProjectPage extends BaseView {
         return this;
     }
 
+    @Step("Click Save")
     public MyProjectsPage clickSave() {
         btnSave.click();
         return  new MyProjectsPage(driver);

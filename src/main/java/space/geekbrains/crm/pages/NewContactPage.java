@@ -1,5 +1,6 @@
 package space.geekbrains.crm.pages;
 
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -43,21 +44,25 @@ public class NewContactPage extends BaseView {
     @FindBy(xpath = "//button[contains(.,'Сохранить и закрыть')]")
     private WebElement btnSave;
 
+    @Step("Enter Last Name {lastName}")
     public NewContactPage enterLastName(String lastName) {
         inputLastName.sendKeys(lastName);
         return this;
     }
 
+    @Step("Enter FirstName {firstName}")
     public NewContactPage enterFirstName(String firstName) {
         inputFirstName.sendKeys(firstName);
         return this;
     }
 
+    @Step("Enter JobTitle {jobTitle}")
     public NewContactPage enterJobTitle(String jobTitle) {
         inputJobTitle.sendKeys(jobTitle);
         return this;
     }
 
+    @Step("Enter Company {company}")
     public NewContactPage enterCompany(String company) {
 
         companyContainer.click();
@@ -88,6 +93,7 @@ public class NewContactPage extends BaseView {
         } catch (Exception e) {}
     }
 
+    @Step("Check Filling with {lastName}, {firstName}, {jobTitle}, {company}")
     public NewContactPage checkFilling(String lastName, String firstName, String jobTitle, String company) {
         Assertions.assertEquals(company, companyChosen.getText());
 
@@ -107,6 +113,7 @@ public class NewContactPage extends BaseView {
         return this;
     }
 
+    @Step("Click Save")
     public AllContactsPage clickSave() {
         btnSave.click();
         return  new AllContactsPage(driver);

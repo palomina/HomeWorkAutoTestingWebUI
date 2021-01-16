@@ -60,7 +60,7 @@ public class GeekbrainsTest {
         driver.quit();
     }
 
-    @Test
+//    @Test
     @DisplayName("Проверка создания проекта")
     public void test1() {
         logger.info("Authorization on site (Авторизация на сайте)");
@@ -229,7 +229,7 @@ public class GeekbrainsTest {
         Assertions.assertEquals("Все Проекты", driver.findElement(By.xpath("//div[@id='container']//h1")).getText());
     }
 
-    @Test
+//    @Test
     @DisplayName("Проверка создания контактного лица")
     public void test2() {
         logger.info("Authorization on site (Авторизация на сайте)");
