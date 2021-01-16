@@ -1,5 +1,6 @@
 package ru.dairy.pages;
 
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,6 +16,7 @@ public class SuccessRemovePage extends BaseView {
         super(driver);
     }
 
+    @Step("Check Success")
     public void checkSuccess() {
         Assertions.assertEquals("Запись удалена", header.getText());
     }

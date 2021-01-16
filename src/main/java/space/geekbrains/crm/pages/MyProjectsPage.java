@@ -1,5 +1,6 @@
 package space.geekbrains.crm.pages;
 
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -24,6 +25,7 @@ public class MyProjectsPage extends BaseView {
         super(driver);
     }
 
+    @Step("Check Page")
     public MyProjectsPage checkPage() {
         wait.until(ExpectedConditions.visibilityOf(btnNewProject));
         Assertions.assertEquals("Все Проекты", header.getText());

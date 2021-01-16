@@ -5,15 +5,20 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.PageLoadStrategy;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 import space.geekbrains.crm.common.Configuration;
+import space.geekbrains.crm.listener.CustomLogger;
+
 
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 
 public abstract class BaseUITest {
-    protected WebDriver driver;
+    protected EventFiringWebDriver driver;
 
     @BeforeAll
     public static void setUp() {
@@ -28,11 +33,25 @@ public abstract class BaseUITest {
         options.addArguments("--disable-popup-blocking");
         options.setPageLoadStrategy(PageLoadStrategy.NORMAL);
 
-        driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        RemoteWebDriver chromeDriver = new ChromeDriver(options);
+        chromeDriver.setLogLevel(Level.INFO);
+
+        driver = new EventFiringWebDriver(chromeDriver);
+        driver.register(new CustomLogger());
+
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(Configuration.BASE_URL);
     }
 
     @AfterEach
-    public void tearDown() { driver.quit(); }
+    public void tearDown() {
+        driver
+                .manage()
+                .logs()
+                .get(LogType.BROWSER)
+                .getAll()
+                .forEach(System.out::println);
+
+        driver.quit();
+    }
 }

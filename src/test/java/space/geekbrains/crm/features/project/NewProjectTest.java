@@ -1,6 +1,8 @@
 package space.geekbrains.crm.features.project;
 
 import com.github.javafaker.Faker;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import space.geekbrains.crm.base.BaseUITest;
@@ -9,10 +11,12 @@ import space.geekbrains.crm.enums.NavigatorBarTabs;
 import space.geekbrains.crm.enums.SubMenu;
 import space.geekbrains.crm.pages.*;
 
+@Feature("GeekbrainsProjects")
 public class NewProjectTest extends BaseUITest {
 
     @Test
     @DisplayName("Проверка создания проекта")
+    @Description("Проверка создания проекта")
     public void newContactTest() {
         MyProjectsPage myProjectsPage = (MyProjectsPage) new LoginPage(driver)
                 .authoriseScenario(Configuration.LOGIN, Configuration.PASSWORD)

@@ -1,5 +1,6 @@
 package space.geekbrains.crm.pages;
 
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import space.geekbrains.crm.base.BaseView;
@@ -13,6 +14,7 @@ public class DashboardPage extends BaseView {
         super(driver);
     }
 
+    @Step("Check Url {url}")
     public void checkUrl(String url) {
         Assertions.assertEquals(url, driver.getCurrentUrl());
     }

@@ -1,6 +1,6 @@
 package ru.dairy.pages;
 
-import org.openqa.selenium.By;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -34,46 +34,52 @@ public class HomePage extends BaseView {
         super(driver);
     }
 
+    @Step("Open Login Menu")
     public HomePage openLoginMenu() {
         openLoginMenu.click();
         return this;
     }
 
+    @Step("Enter Login {login}")
     public HomePage enterLogin(String login) {
         inputLogin.click();
         inputLogin.sendKeys(login);
         return this;
     }
 
+    @Step("Enter Password {password}")
     public HomePage enterPassword(String password) {
         inputPassword.click();
         inputPassword.sendKeys(password);
         return this;
     }
 
+    @Step("Click Login")
     public DashboardPage clickLogin() {
         btnLogin.click();
         return new DashboardPage(driver);
     }
 
-
+    @Step("Open Search Menu")
     public HomePage openSearchMenu() {
         openSearchMenu.click();
         return this;
     }
 
+    @Step("Enter Search Query")
     public HomePage enterSearchQuery(String query) {
         inputSearch.click();
         inputSearch.sendKeys(query);
         return this;
     }
 
+    @Step("Click Search")
     public SearchPage clickSearch() {
         btnSearch.click();
         return new SearchPage(driver);
     }
 
-
+    @Step("Authorise Scenario with {login} and {password}")
     public DashboardPage authoriseScenario(String login, String password) {
         return this.openLoginMenu()
                 .enterLogin(login)

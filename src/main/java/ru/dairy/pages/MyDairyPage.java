@@ -1,5 +1,6 @@
 package ru.dairy.pages;
 
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
 
 import org.openqa.selenium.WebDriver;
@@ -24,16 +25,18 @@ public class MyDairyPage extends BaseView {
     public MyDairyPage(WebDriver driver) {
         super(driver);
     }
-
+    @Step("Check Page")
     public void checkPage() {
         Assertions.assertEquals("Мой дневник", header.getText());
     }
 
+    @Step("Check Exists Records")
     public MyDairyPage checkExistsRecords() {
         assert(records.size() > 0);
         return this;
     }
 
+    @Step("Click Remove")
     public AcceptPage clickRemove() {
         btnFirstRecordRemove.click();
         return new AcceptPage(driver);

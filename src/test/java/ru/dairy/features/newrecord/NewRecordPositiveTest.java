@@ -1,6 +1,8 @@
 package ru.dairy.features.newrecord;
 
 import com.github.javafaker.Faker;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.dairy.base.BaseUITest;
@@ -9,10 +11,12 @@ import ru.dairy.enums.NavigatorBarTabs;
 import ru.dairy.pages.HomePage;
 import ru.dairy.pages.NewRecordPage;
 
+@Feature("DairyNewRecord")
 public class NewRecordPositiveTest extends BaseUITest {
 
     @Test
     @DisplayName("Проверка создания новой записи")
+    @Description("Проверка создания новой записи")
     public void newRecordTest() {
         NewRecordPage newRecord = (NewRecordPage) new HomePage(driver)
                 .authoriseScenario(Configuration.LOGIN, Configuration.PASSWORD)
